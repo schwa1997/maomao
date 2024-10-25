@@ -20,6 +20,7 @@ export default function BlogsPage() {
           <Link href={`/blogs/${blog.id}`} key={blog.id}>
             <div className="bg-white shadow rounded-lg p-6 hover:shadow-lg transition duration-300">
               <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
+              <p className="text-sm text-gray-500 mb-2">作者: {blog.author}</p>
               <p className="text-gray-600 mb-4">{blog.description}</p>
               <div className="text-purple-600 hover:text-purple-800">阅读更多 &rarr;</div>
             </div>

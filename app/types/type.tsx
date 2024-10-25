@@ -43,6 +43,7 @@ interface Media {
 
 interface Blog {
     id: number;
+    author: string;
     title: string;
     description: string;
     content: string;

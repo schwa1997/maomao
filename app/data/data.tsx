@@ -117,9 +117,10 @@ export const blogs = {
     blogs: [
         {
             "id": 1,
-            "title": "如何使用林毛毛语录",
-            "description": "林毛毛语录是一个收集林毛毛语录的网站，你可以在这里找到林毛毛的所有语录，并且可以收藏你喜欢的语录。",
-            "content": "林毛毛语录是一个收集林毛毛语录的网站，你可以在这里找到林毛毛的所有语录，并且可以收藏你喜欢的语录。",
+            "author": "大波浪味仙贝",
+            "title": "大胸擦边女权",
+            "description": "好小众的赛道",
+            "content": "",
             "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         }
     ]
