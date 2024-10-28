@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { blogs } from '../data/data';
 import { Blog } from '../types/type';
-import { BlogCardPreview } from './components/component';
+import { BlogCardPreview } from './components/blog';
 
 export default function BlogsPage() {
   const [blogPosts, setBlogPosts] = useState<Blog[]>([]);

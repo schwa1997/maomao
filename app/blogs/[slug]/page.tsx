@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { blogs } from '../../data/data';
 import { Blog } from '../../types/type';
 import { useParams } from 'next/navigation';
-import BlogCard from '../components/component';
+import BlogCard from '../components/blog';
 
 
 

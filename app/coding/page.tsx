@@ -15,7 +15,6 @@ export default function CodingTutorials() {
     tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     tutorial.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-
   const handleTutorialClick = (tutorialId: number) => {
     router.push(`/coding/${tutorialId}`);
   };
