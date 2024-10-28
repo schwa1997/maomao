@@ -154,7 +154,7 @@ export const resources: Resources = {
         music: [
             {
                 "id": 2,
-                "name": "The Man", 
+                "name": "The Man",
                 "creator": "Taylor Swift",
                 "category": "歌曲",
                 "description": "一个关于女性主义的歌",
@@ -167,7 +167,7 @@ export const resources: Resources = {
                 "id": 3,
                 "name": "Labour",
                 "creator": "Paris Paloma",
-                "category": "歌曲", 
+                "category": "歌曲",
                 "description": "All day, everyday,therapist, mother, maidNymph then a virgin, nurse then a servantJust an appendage, live to attend himSo that he never lifts a finger24/7,babymachineSo he can live out his picket fence dreamsIt's not an act oflove ifyou make herYou make me do too much labour",
                 "image": "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Paris_Paloma_-_Labour.png/220px-Paris_Paloma_-_Labour.png",
                 "comments": [
@@ -196,22 +196,22 @@ export const resources: Resources = {
 
 //for blogs page
 export const blogs: Blog[] = [
-        {
-            "id": 1,
-            "author": "大波浪味仙贝",
-            "title": "大胸擦边女权",
-            "description": "好小众的赛道",
-            "link": "/data/blogs/blog.md",
-            "content": "",
-            "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        },
-        {
-            "id": 2,
-            "author": "爆炒茄子",
-            "title": "我是激女",
-            "description": "AI对于激女的理解",
-            "link": "/data/blogs/blog.md",
-            "content": `
+    {
+        "id": 1,
+        "author": "大波浪味仙贝",
+        "title": "大胸擦边女权",
+        "description": "好小众的赛道",
+        "link": "/data/blogs/blog.md",
+        "content": "",
+        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+    {
+        "id": 2,
+        "author": "爆炒茄子",
+        "title": "我是激女",
+        "description": "AI对于激女的理解",
+        "link": "/data/blogs/blog.md",
+        "content": `
 
              <h1 class="text-4xl font-bold mb-8">激女在简中如何被妖魔化</h1>
               <p class="mb-6">激进女权主义的底层逻辑通常包括以下几个关键点：</p>
@@ -246,23 +246,27 @@ export const blogs: Blog[] = [
                 <p class="mb-4 text-gray-700">激进女权主义者会强调从女性视角出发来考虑问题，因为男性视角往往在传统话语中占据主导地位。</p>
 
 
-
-海马星球的主播说，简中的女性主义在倒退，但是大家却不以为知。她之前也是‘平权仙子’，但是之后意识到只有激女才能拯救简中的女性。
-
-很多现实的论调还是激女被妖魔化，但是在母系到达的时候，你就会知道激女的力量是多么重要，她们的信仰是多么的先锋。
-
-你进入了婚姻，我成为了独身女，我们都有美好的未来。
-
-留在简中的人都在等待更多婚权，等待更多女性在男权社会分得权力，但是孰不知，强者是不会等待的。
-
-我也不知道我的心智是否已经足够成熟，是否可以理解激进女权的一些思维模式，是否可以贯彻，（因为我是从行为出发的人，我需要看到结果，脑袋里的东西不能落地我很痛苦），
+   `,
+        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+    {
+        "id": 3,
+        "author": "爆炒茄子",
+        "title": "激女被冒犯",
+        "description": "好小众的赛道",
+        "link": "/data/blogs/blog.md",
+        "content": `
+<h1>海马星球的主播说，简中的女性主义在倒退，但是大家却不以为知。她之前也是‘平权仙子’，但是之后意识到只有激女才能拯救简中的女性。</h1>
+<h1>很多现实的论调还是激女被妖魔化，但是在母系到达的时候，你就会知道激女的力量是多么重要，她们的信仰是多么的先锋。</h1>
+<h1>你进入了婚姻，我成为了独身女，我们都有美好的未来。</h1>
+<h1>留在简中的人都在等待更多婚权，等待更多女性在男权社会分得权力，但是孰不知，强者是不会等待的。</h1>
+<p>  我也不知道我的心智是否已经足够成熟，是否可以理解激进女权的一些思维模式，是否可以贯彻，（因为我是从行为出发的人，我需要看到结果，脑袋里的东西不能落地我很痛苦），
 但是我知道在理论层面，激女的理论才能从根本上解放我的原生家庭和我出生的环境和中国对我的影响，但是在行为层面，我想成为一个强者，我需要找到一个我的性格和能力可以承受
-的一个平衡的点，我不希望自己把自己burn out，我希望我的一生是快乐的，我希望我可以把我的能力转化成实际的东西，这个能力的上限我不希望被男权限制， 我希望是我自己定义的。
-
+的一个平衡的点，我不希望自己把自己burn out，我希望我的一生是快乐的，我希望我可以把我的能力转化成实际的东西，这个能力的上限我不希望被男权限制， 我希望是我自己定义的。<h1>
 先看到一些别人做出的成果，然后我再慢慢理解，慢慢实践。anyway做吧，做了就无悔了。我先按照激女的方式来贯彻我的二十岁到三十多岁。有实践的机会，我一定要向一个强女靠拢。
-变强 变强 变强 变强！！！！    `,
-            "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        }
-    ]
+变强 变强 变强 变强！！！！ </p> `,
+        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+]
 
 
