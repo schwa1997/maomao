@@ -17,7 +17,7 @@ export default function TutorialPage() {
   useEffect(() => {
     const tutorialId = parseInt(slug as string, 10);
     const currentIndex = tuturials.findIndex(t => t.id === tutorialId);
-    
+
     if (currentIndex !== -1) {
       setTutorial(tuturials[currentIndex]);
       setPrevTutorial(currentIndex > 0 ? tuturials[currentIndex - 1] : null);
@@ -50,7 +50,7 @@ export default function TutorialPage() {
       <h1 className="text-3xl font-bold mb-4">{tutorial.title}</h1>
       <div className="flex flex-wrap mb-4">
         {tutorial.tags.map((tag, index) => (
-          <span key={index} className="bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded mr-2 mb-2">
+          <span key={index} className="bg-green-100 text-green-800 text-sm px-2 py-1 rounded mr-2 mb-2">
             {tag}
           </span>
         ))}
@@ -86,18 +86,16 @@ export default function TutorialPage() {
         <button
           onClick={goToPrevious}
           disabled={!prevTutorial}
-          className={`px-4 py-2 rounded ${
-            prevTutorial ? 'bg-purple-600 text-white hover:bg-purple-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
+          className={`px-4 py-2 rounded ${prevTutorial ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
         >
           Previous
         </button>
         <button
           onClick={goToNext}
           disabled={!nextTutorial}
-          className={`px-4 py-2 rounded ${
-            nextTutorial ? 'bg-purple-600 text-white hover:bg-purple-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
+          className={`px-4 py-2 rounded ${nextTutorial ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
         >
           Next
         </button>

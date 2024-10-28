@@ -1,19 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { user, highlights } from '../data/data';
 import { Tweet } from '../types/type';
+import InfoHeader from '../reusable/InfoHeader';
 
 const TWEETS_PER_PAGE = 10; // Number of tweets to load per page
 
 export default function Home() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
-  const [currentUser, setCurrentUser] = useState(user);
   const [searchDate, setSearchDate] = useState('');
   const [searchText, setSearchText] = useState('');
   const [isFilterActive, setIsFilterActive] = useState(false);
-  const [highlightedQuotes, setHighlightedQuotes] = useState(highlights);
-  const popularSearchTerms = ['钱', '权', '自由', '平等', '双标', '😂','家'];
+  const popularSearchTerms = ['钱', '权', '自由', '平等', '双标', '😂', '家'];
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -53,23 +51,6 @@ export default function Home() {
     }
   };
 
-  const isFavorite = (tweetId: number) => currentUser.notes.some((fav) => fav.tweet_id === tweetId);
-
-  const handleFavorite = (tweet: Tweet) => {
-    const updatedUser = { ...currentUser };
-    const favoriteIndex = updatedUser.notes.findIndex((fav) => fav.tweet_id === tweet.id);
-
-    if (favoriteIndex !== -1) {
-      // Remove from favorites
-      updatedUser.notes.splice(favoriteIndex, 1);
-    } else {
-      // Add to favorites
-      updatedUser.notes.push({ tweet_id: tweet.id, comment: '' });
-    }
-
-    setCurrentUser(updatedUser);
-  };
-
   const getTimeTag = (date: string) => {
     const tweetDate = new Date(date);
     const now = new Date();
@@ -81,6 +62,99 @@ export default function Home() {
     if (diffDays < 30) return 'This Month';
     if (diffDays < 365) return 'This Year';
     return 'Older';
+  };
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Quote copied to clipboard!');
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  const downloadAsImage = (text: string, date: string) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Calculate text dimensions and required canvas height
+    ctx.font = '20px Arial';
+    const maxWidth = 750;
+    const lineHeight = 30;
+    const padding = 40;
+
+    // Split text into paragraphs
+    const paragraphs = text.split('\n\n');
+    let lines: string[] = [];
+    let totalHeight = padding * 2; // Top and bottom padding
+
+    // Calculate lines and total height needed
+    paragraphs.forEach(paragraph => {
+      // Handle each paragraph
+      let currentLine = '';
+      const words = paragraph.split('');
+
+      words.forEach(char => {
+        const testLine = currentLine + char;
+        const metrics = ctx.measureText(testLine);
+
+        if (metrics.width > maxWidth) {
+          lines.push(currentLine);
+          currentLine = char;
+          totalHeight += lineHeight;
+        } else {
+          currentLine = testLine;
+        }
+      });
+
+      if (currentLine) {
+        lines.push(currentLine);
+        totalHeight += lineHeight;
+      }
+
+      // Add extra line between paragraphs
+      lines.push('');
+      totalHeight += lineHeight;
+    });
+
+    // Set canvas dimensions based on content
+    canvas.width = 800;
+    canvas.height = totalHeight + 50; // Extra space for date
+
+    // Draw solid background
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Add some visual style
+    ctx.fillStyle = '#F3F4F6'; // Light gray background
+    ctx.fillRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+    // Draw text
+    ctx.fillStyle = '#000000';
+    ctx.font = '20px Arial';
+    let y = padding;
+    lines.forEach(line => {
+      ctx.fillText(line, padding, y);
+      y += lineHeight;
+    });
+
+    // Add date at bottom
+    ctx.font = '16px Arial';
+    ctx.fillText(new Date(date).toLocaleDateString(), padding, canvas.height - padding);
+
+
+
+    try {
+      // Create download link
+      const link = document.createElement('a');
+      link.download = 'quote.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    } catch (err) {
+      console.error('Failed to download image:', err);
+      alert('Failed to download image. Please try again.');
+    }
   };
 
   const filteredTweets = tweets.filter(tweet => {
@@ -109,12 +183,6 @@ export default function Home() {
     );
   };
 
-  const handleHighlight = (tweet: Tweet) => {
-    const newHighlight = { text: tweet.full_text };
-    console.log(newHighlight);
-    setHighlightedQuotes([...highlightedQuotes, newHighlight]);
-  };
-
   const loadMoreTweets = () => {
     setLoading(true);
     setTimeout(() => {
@@ -128,12 +196,12 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <InfoHeader title="林毛毛语录" description="简中互联网的神，你可以使用filter或者关键词，查找你想要的话，可以复制粘贴给朋友，或者可以点击下载存为图片" />
       <div className="mb-4">
         <div className="flex justify-end mb-4">
           <button
             onClick={handleFilterToggle}
-            className={`px-4 py-2 rounded ${isFilterActive ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-800'
-              }`}
+            className={`px-4 py-2 rounded ${isFilterActive ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-800'}`}
           >
             {isFilterActive ? 'Hide Filters' : 'Show Filters'}
           </button>
@@ -179,8 +247,8 @@ export default function Home() {
       </div>
       <div className="space-y-4">
         {displayedTweets.map((tweet, index) => (
-          <div 
-            key={tweet.id} 
+          <div
+            key={tweet.id}
             className="bg-white shadow rounded-lg p-4"
             ref={index === displayedTweets.length - 1 ? lastTweetElementRef : null}
           >
@@ -191,19 +259,24 @@ export default function Home() {
                   {getTimeTag(tweet.created_at)}
                 </span>
               </div>
-              <div>
+              <div className="flex space-x-2">
                 <button
-                  onClick={() => handleFavorite(tweet)}
-                  className={`text-2xl transition-transform duration-200 mr-2 ${isFavorite(tweet.id) ? 'text-yellow-500 transform scale-125' : 'text-gray-400'
-                    }`}
+                  onClick={() => copyToClipboard(tweet.full_text)}
+                  className="text-green-600 hover:text-green-800 p-2"
+                  title="Copy Quote"
                 >
-                  ★
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
                 </button>
                 <button
-                  onClick={() => handleHighlight(tweet)}
-                  className="text-2xl text-purple-500 hover:text-purple-600 transition-colors duration-200"
+                  onClick={() => downloadAsImage(tweet.full_text, tweet.created_at)}
+                  className="text-green-600 hover:text-green-800 p-2"
+                  title="Download as Image"
                 >
-                  ✨
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
                 </button>
               </div>
             </div>

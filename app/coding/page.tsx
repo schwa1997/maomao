@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { tuturials } from '../data/data';
 import { Tutorial } from '../types/type';
+import InfoHeader from '../reusable/InfoHeader';
 
 
 export default function CodingTutorials() {
@@ -21,7 +22,7 @@ export default function CodingTutorials() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Coding Tutorials</h1>
+      <InfoHeader title="编程教程" description="工具很重要 要学习如何去获取更多金钱和社会资源 反正就是搞钱" />
       <div className="mb-4">
         <input
           type="text"
@@ -38,14 +39,14 @@ export default function CodingTutorials() {
             <p className="text-gray-600 mb-4">{tutorial.description}</p>
             <div className="flex flex-wrap mb-4">
               {tutorial.tags.map((tag, index) => (
-                <span key={index} className="bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded mr-2 mb-2">
+                <span key={index} className="bg-green-100 text-green-800 text-sm px-2 py-1 rounded mr-2 mb-2">
                   {tag}
                 </span>
               ))}
             </div>
             <button
               onClick={() => handleTutorialClick(tutorial.id)}
-              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
             >
               View Tutorial
             </button>

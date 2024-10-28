@@ -20,7 +20,11 @@ interface Comment {
 
 interface Resources {
     communities: Community[];
-    media: Media[];
+    media: {
+        books: Book[];
+        music: Music[];
+        shows: Show[];
+    };
 }
 
 interface Community {
@@ -31,7 +35,7 @@ interface Community {
     url: string;
 }
 
-interface Media {
+interface Book {
     id: number;
     name: string;
     creator: string;
@@ -39,6 +43,26 @@ interface Media {
     description: string;
     image: string;
     quotes: string[];
+    comments: string[];
+}
+interface Music {
+    id: number;
+    name: string;
+    creator: string;
+    category: string;
+    description: string;
+    image: string;
+    comments: string[];
+}
+interface Show {
+    id: number;
+    name: string;
+    creator: string;
+    category: string;
+    description: string;
+    image: string;
+    quotes: string[];
+    comments: string[];
 }
 
 interface Blog {
@@ -46,8 +70,14 @@ interface Blog {
     author: string;
     title: string;
     description: string;
+    link: string;
     content: string;
     image: string;
 }
-
-export type { Tutorial, Tweet, Comment, Resources, Community, Media, Blog };
+interface TimelineEvent {
+    title: string;
+    date: string;
+    description: string;
+    work: string;
+}
+export type { Tutorial, Tweet, Comment, Resources, Community, Book, Show, Music, Blog, TimelineEvent };

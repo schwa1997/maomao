@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen dark:bg-black bg-white dark:text-black text-white">
       <main className="flex-grow container mx-auto px-4 py-8 flex flex-wrap justify-center items-center">
         {highlights.map((item, index) => (
           <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
