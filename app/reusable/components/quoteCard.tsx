@@ -104,7 +104,6 @@ export default function QuoteCard({ text, date }: QuoteCardProps) {
             <div className="absolute -bottom-1 -right-1 w-full h-full bg-black/60 dark:bg-white/50 rounded-lg -z-10 hover:bg-pink/50 dark:hover:bg-pink/50"></div>
             <div className="flex justify-between items-start mb-2">
                 <div>
-                    
                     <span className="text-xs bg-pink/10 dark:bg-pink/20 rounded-full px-2 py-1 mt-1 inline-block">
                         {new Date(date).toLocaleDateString()}
                     </span>
@@ -113,10 +112,9 @@ export default function QuoteCard({ text, date }: QuoteCardProps) {
                     <PinkButton text="copy" onClick={() => copyToClipboard(text)} size="small" />
                     <PinkButton text="Download" onClick={() => downloadAsImage(text, date)} size="small" />
                 </div>
-                
             </div>
-            <p className="text-gray-800 dark:text-gray-200">{text}</p>
-            <p className="text-gray-600 dark:text-gray-400 text-sm right-0">{new Date(date).toLocaleString()}</p>
+            <div className="text-gray-800 dark:text-gray-200">{text}</div>
+            <div className="text-gray-600 dark:text-gray-400 text-sm right-0">{new Date(date).toLocaleString()}</div>
         </div>
     );
 }

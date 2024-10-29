@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import Container from './container';
+import Container from './Container';
 
 
 interface SectionContainerProps {

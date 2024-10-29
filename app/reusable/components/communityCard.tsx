@@ -4,7 +4,7 @@ import { Community } from "@/app/types/type";
 import { useRouter } from "next/navigation";
 import PinkButton from "../reusable/PinkButton";
 import Image from "next/image";
-import Container from "../reusable/container";
+import Container from "../reusable/Container";
 
 
 interface CommunityModalProps {

@@ -3,7 +3,7 @@
 import { MediaItem } from "@/app/types/type";
 import { useState } from "react";
 import PinkButton from "../reusable/PinkButton";
-import Container from "../reusable/container";
+import Container from "../reusable/Container";
 
 interface MediaModalProps {
   media: MediaItem;

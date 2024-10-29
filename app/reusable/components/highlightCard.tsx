@@ -24,7 +24,7 @@ export default function HighlightCard({
     };
 
     return (
-        <div className="relative justify-center overflow-hidden ">
+        <div className="relative justify-center overflow-hidden">
             <div className="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
                 <div className="absolute -bottom-1 -right-1 w-full h-full bg-black/60 dark:bg-white/50 rounded-lg -z-10 hover:bg-pink/50 dark:hover:bg-pink/50"></div>
                 <span className="absolute top-10 z-0 h-20 w-20 rounded-full bg-pink transition-all duration-300 group-hover:scale-[10]"></span>
@@ -40,7 +40,7 @@ export default function HighlightCard({
                         </svg>
                     </span>
                     <div className="space-y-6 pt-5 text-2xl leading-10 text-black transition-all duration-300 group-hover:text-black/90 font-bold">
-                        <p>{highlightText(description)}</p>
+                        {highlightText(description)}
                     </div>
                     <div className="pt-5 text-sm font-semibold leading-7 text-black">
                         <Link href="/maomao">Read more &rarr;</Link>

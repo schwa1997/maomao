@@ -45,12 +45,12 @@ export default function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-            <PinkButton text="强女手册" size="xlarge" />
+          <PinkButton text="强女手册" size="xlarge" />
         </div>
 
-        <nav className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8">
           <NavLinks />
-        </nav>
+        </div>
 
         <Button
           variant="ghost"

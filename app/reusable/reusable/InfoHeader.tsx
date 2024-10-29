@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import PinkButton from './PinkButton';
-import Container from './container';
+import Container from './Container';
 
 interface InfoHeaderProps {
   description: string;

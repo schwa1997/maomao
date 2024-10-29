@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Tutorial } from "../../types/type";
-import Container from "../reusable/container";
+import Container from "../reusable/Container";
 
 
 interface TutorialCardProps {

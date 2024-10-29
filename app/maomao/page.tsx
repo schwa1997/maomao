@@ -1,13 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Tweet } from '../types/type';
-import InfoHeader from '../reusable/reusable/InfoHeader';
 import QuoteCard from '../reusable/components/quoteCard';
 import PinkButton from '../reusable/reusable/PinkButton';
 import Container from '../reusable/reusable/Container';
-
-const TWEETS_PER_PAGE = 10;
 
 export default function Home() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
@@ -16,31 +13,11 @@ export default function Home() {
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [isShowInfo, setIsShowInfo] = useState(false);
   const popularSearchTerms = ['钱', '权', '自由', '平等', '双标', '😂', '家'];
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  const observer = useRef<IntersectionObserver>();
-  const lastTweetElementRef = useCallback((node: HTMLDivElement) => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
-        setCurrentPage(prevPage => prevPage + 1);
-      }
-    });
-    if (node) observer.current.observe(node);
-  }, [loading, hasMore]);
 
   useEffect(() => {
     fetchTweets();
   }, []);
-
-  useEffect(() => {
-    if (currentPage > 1) {
-      loadMoreTweets();
-    }
-  }, [currentPage]);
 
   const fetchTweets = async () => {
     try {
@@ -68,19 +45,7 @@ export default function Home() {
       setSearchDate('');
       setSearchText('');
     }
-    setCurrentPage(1);
   };
-
-  const loadMoreTweets = () => {
-    setLoading(true);
-    setTimeout(() => {
-      const newDisplayedTweets = filteredTweets.slice(0, currentPage * TWEETS_PER_PAGE);
-      setHasMore(newDisplayedTweets.length < filteredTweets.length);
-      setLoading(false);
-    }, 500);
-  };
-
-  const displayedTweets = filteredTweets.slice(0, currentPage * TWEETS_PER_PAGE);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -130,30 +95,15 @@ export default function Home() {
             <PinkButton text={isFilterActive ? '关闭查找' : '查找'} onClick={handleFilterToggle} size="small" />
           </div>
         </div>
-
-
       </div>
       <div className="space-y-4">
-        {displayedTweets.map((tweet, index) => {
-          if (displayedTweets.length === index + 1) {
-            return (
-              <div ref={lastTweetElementRef} key={index}>
-                <QuoteCard
-                  text={tweet.full_text}
-                  date={tweet.created_at}
-                />
-              </div>
-            );
-          } else {
-            return (
-              <QuoteCard
-                key={index}
-                text={tweet.full_text}
-                date={tweet.created_at}
-              />
-            );
-          }
-        })}
+        {filteredTweets.map((tweet, index) => (
+          <QuoteCard
+            key={index}
+            text={tweet.full_text}
+            date={tweet.created_at}
+          />
+        ))}
       </div>
       {loading && <p className="text-center mt-4 text-black dark:text-white">Loading more tweets...</p>}
     </div>
