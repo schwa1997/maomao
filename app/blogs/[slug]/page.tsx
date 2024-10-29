@@ -1,12 +1,14 @@
 'use client'
 
+import PinkButton from '@/app/reusable/reusable/PinkButton'
 import { blogs } from '../../data/data'
 import BlogCard from '../../reusable/components/blog'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation';
 
 export default function BlogPost() {
   const params = useParams()
+  const router = useRouter();
   const currentId = parseInt(params.slug as string)
   const blog = blogs.find(b => b.id === currentId)
 
@@ -31,33 +33,43 @@ export default function BlogPost() {
   const prevBlog = blogs.find(b => b.id === currentId - 1)
   const nextBlog = blogs.find(b => b.id === currentId + 1)
 
+  const goToPrevious = () => {
+    if (prevBlog) {
+      router.push(`/blogs/${prevBlog.id}`);
+    }
+  };
+
+  const goToNext = () => {
+    if (nextBlog) {
+      router.push(`/blogs/${nextBlog.id}`);
+    }
+  };
+
+
+
+
+
+
+
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       <BlogCard blog={blog} />
 
       <nav className="flex justify-between items-center max-w-3xl mx-auto mt-8">
         {prevBlog ? (
-          <Link
-            href={`/blogs/${prevBlog.id}`}
-            className="flex items-center text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300"
-          >
-            <span className="mr-2">←</span>
-            <span className="hidden sm:inline">{prevBlog.title}</span>
-            <span className="sm:hidden">上一篇</span>
-          </Link>
+          
+   
+          <PinkButton text="←上一篇" onClick={goToPrevious} size="small" />
         ) : (
           <div />
         )}
 
         {nextBlog ? (
-          <Link
-            href={`/blogs/${nextBlog.id}`}
-            className="flex items-center text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 ml-auto"
-          >
-            <span className="hidden sm:inline">{nextBlog.title}</span>
-            <span className="sm:hidden">下一篇</span>
-            <span className="ml-2">→</span>
-          </Link>
+          
+          <PinkButton text="下一篇→" onClick={goToNext} size="small" />
+         
         ) : (
           <div />
         )}

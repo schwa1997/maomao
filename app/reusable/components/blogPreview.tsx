@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { Blog } from '../../types/type';
 import Container from '../reusable/container';
-import Image from 'next/image';
 
 interface BlogCardProps {
   blog: Blog;

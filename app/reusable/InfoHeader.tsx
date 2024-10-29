@@ -22,7 +22,7 @@ export default function InfoHeader({ description }: InfoHeaderProps) {
           </Container>
         }
         <div className="absolute top-0 right-4">
-          <PinkButton text={showInfo ? '隐藏说明' : '使用说明'} useEyeIcon={true} size="small" onClick={() => setShowInfo(!showInfo)} />
+          <PinkButton text={showInfo ? '隐藏说明' : '使用说明'} useIcon={true} size="small" onClick={() => setShowInfo(!showInfo)} />
         </div>
       </div>
     </>

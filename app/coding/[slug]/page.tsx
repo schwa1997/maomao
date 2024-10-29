@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { tuturials } from '../../data/data';
 import { Tutorial } from '../../types/type';
-
 import { TutorialCard } from '../../reusable/components/tuturial';
 import PinkButton from '@/app/reusable/reusable/PinkButton';
 export default function TutorialPage() {
