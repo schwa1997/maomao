@@ -1,16 +1,10 @@
 "use client"
-import { useState, useEffect } from 'react';
 import { highlights } from './data/data';
 import HighlightCard from './reusable/components/highlightCard';
 import Container from './reusable/reusable/container';
 import Footer from './reusable/Footer';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <div className="flex flex-col dark:bg-black bg-white">

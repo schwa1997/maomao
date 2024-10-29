@@ -4,12 +4,10 @@ import { useState } from 'react';
 import { resources } from '../data/data';
 import InfoHeader from '../reusable/InfoHeader';
 import SectionContainer from '../reusable/components/sectionContainer';
-import { MediaItem } from '../types/type';
 import MediaCard from '../reusable/components/mediaCard';
 
 export default function Communities() {
   const [communityLinks] = useState(resources.communities);
-  const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
@@ -50,7 +48,7 @@ export default function Communities() {
         <SectionContainer title="Media Resources">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {resources.media.map((item) => (
-              <MediaCard key={item.id} media={item} onClose={() => setSelectedMedia(null)} />
+              <MediaCard key={item.id} media={item} />
             ))}
           </div>
         </SectionContainer>

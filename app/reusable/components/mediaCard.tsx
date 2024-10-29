@@ -6,7 +6,7 @@ import PinkButton from "../reusable/PinkButton";
 
 interface MediaModalProps {
   media: MediaItem;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const renderMediaIcon = (category: string) => {
@@ -33,7 +33,7 @@ const renderMediaIcon = (category: string) => {
   }
 };
 
-export default function MediaCard({ media, onClose }: MediaModalProps) {
+export default function MediaCard({ media }: MediaModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
@@ -43,7 +43,6 @@ export default function MediaCard({ media, onClose }: MediaModalProps) {
 
   const handleClose = () => {
     setIsModalOpen(false);
-    onClose();
   };
 
   return (
