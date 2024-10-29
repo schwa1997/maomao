@@ -1,7 +1,7 @@
 'use client'
 
 import { blogs } from '../../data/data'
-import BlogCard from '../components/blog'
+import BlogCard from '../../reusable/components/blog'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 

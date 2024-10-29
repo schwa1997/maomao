@@ -1,4 +1,4 @@
-import { Blog, Resources, Tutorial, Book, Music, Show } from "../types/type";
+import { Blog, Resources, Tutorial} from "../types/type";
 
 //for profile page
 export const profile = {
@@ -63,21 +63,27 @@ export const profile = {
 export const highlights = [
     {
         "text": "强女管不了那么多。",
+        "highlight": ["强女"],
     },
     {
         "text": "我71年被出生的",
+        "highlight": ["被"],
     },
     {
         "text": "我认为有的人，天生不容易被洗脑。",
+        "highlight": ["天生"],
     },
     {
         "text": "强女，目前没掌权，缺资源，无红利，光凭一腔热血，解救不了任何弱女，只能把她们推出去，剥夺女籍",
+        "highlight": ["强女", "解救", "女籍"],
     },
     {
         "text": "在这样一个信息爆炸的环境里，有人专门掏屎，这，还是跟基因为蛆有关吧",
+        "highlight": ["信息爆炸", "掏屎", "基因为蛆"],
     },
     {
         "text": "人无外财不富，马无夜草不肥",
+        "highlight": ["外财", "夜草"],
     },
 ]
 
@@ -134,8 +140,8 @@ export const resources: Resources = {
             "url": "https://seahorseplanet.net/",
         },
     ],
-    "media": {
-        books: [
+    "media": [
+     
             {
                 "id": 12,
                 "name": "我的天才女友",
@@ -150,8 +156,8 @@ export const resources: Resources = {
                     "Labour既有工作、劳动的意思，又有生育的意思。'you make me do too much labour'，所以说这里不仅仅有让我做了太多劳动，还有一直不停让我生孩子的意思。一句双关！真是绝啊！"
                 ]
             }
-        ],
-        music: [
+    
+      ,
             {
                 "id": 2,
                 "name": "The Man",
@@ -161,7 +167,10 @@ export const resources: Resources = {
                 "image": "https://static1.srcdn.com/wordpress/wp-content/uploads/2020/02/Taylor-Swift-in-The-Man-music-video.jpg",
                 "comments": [
                     "Labour既有工作、劳动的意思，又有生育的意思。'you make me do too much labour'，所以说这里不仅仅有让我做了太多劳动，还有一直不停让我生孩子的意思。一句双关！真是绝啊！"
-                ]
+                ],
+                "quotes": [
+                    "I'm not a feminist, I'm a humanist."
+                ],
             },
             {
                 "id": 3,
@@ -172,10 +181,13 @@ export const resources: Resources = {
                 "image": "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Paris_Paloma_-_Labour.png/220px-Paris_Paloma_-_Labour.png",
                 "comments": [
                     "Labour既有工作、劳动的意思，又有生育的意思。'you make me do too much labour'，所以说这里不仅仅有让我做了太多劳动，还有一直不停让我生孩子的意思。一句双关！真是绝啊！"
-                ]
+                ],
+                "quotes": [
+                    "I'm not a feminist, I'm a humanist."
+                ],
             }
-        ],
-        shows: [
+        ,
+   
             {
                 "id": 1,
                 "name": "Fleabag",
@@ -192,7 +204,6 @@ export const resources: Resources = {
             }
         ]
     }
-}
 
 //for blogs page
 export const blogs: Blog[] = [
@@ -203,8 +214,9 @@ export const blogs: Blog[] = [
         "description": "好小众的赛道",
         "link": "/data/blogs/blog.md",
         "content": "",
-        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "image": "https://thumbs.dreamstime.com/b/girl-power-vector-lettering-illustration-pink-female-silhouette-doing-bicep-curl-hand-written-inspirational-message-120308341.jpg",
     },
+    
     {
         "id": 2,
         "author": "爆炒茄子",
@@ -247,7 +259,7 @@ export const blogs: Blog[] = [
 
 
    `,
-        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "image": "https://i2-prod.manchestereveningnews.co.uk/news/greater-manchester-news/article7375146.ece/ALTERNATES/s1227b/Powerpuff_girls_characters.jpg",
     },
     {
         "id": 3,
@@ -265,7 +277,25 @@ export const blogs: Blog[] = [
 的一个平衡的点，我不希望自己把自己burn out，我希望我的一生是快乐的，我希望我可以把我的能力转化成实际的东西，这个能力的上限我不希望被男权限制， 我希望是我自己定义的。<h1>
 先看到一些别人做出的成果，然后我再慢慢理解，慢慢实践。anyway做吧，做了就无悔了。我先按照激女的方式来贯彻我的二十岁到三十多岁。有实践的机会，我一定要向一个强女靠拢。
 变强 变强 变强 变强！！！！ </p> `,
-        "image": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1794f10c-a5f1-4cf0-b4db-7d72f953be93/dfr6dqo-927b4f7d-aaeb-452d-ba66-95a51f52ab2b.png/v1/fill/w_894,h_894,q_70,strp/pink_characters__director_s_cut__by_annazeee_dfr6dqo-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzAwMCIsInBhdGgiOiJcL2ZcLzE3OTRmMTBjLWE1ZjEtNGNmMC1iNGRiLTdkNzJmOTUzYmU5M1wvZGZyNmRxby05MjdiNGY3ZC1hYWViLTQ1MmQtYmE2Ni05NWE1MWY1MmFiMmIucG5nIiwid2lkdGgiOiI8PTMwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.VqG7lRhVAZMEH4fTY5bIhJFcARmoKrmfqMsyF3mvlTM",
+    },
+    {
+        "id": 11,
+        "author": "大波浪味仙贝",
+        "title": "大胸擦边女权",
+        "description": "好小众的赛道",
+        "link": "/data/blogs/blog.md",
+        "content": "",
+        "image": "https://thumbs.dreamstime.com/b/girl-power-vector-lettering-illustration-pink-female-silhouette-doing-bicep-curl-hand-written-inspirational-message-120308341.jpg",
+    },
+    {
+        "id": 112,
+        "author": "大波浪味仙贝",
+        "title": "大胸擦边女权",
+        "description": "好小众的赛道",
+        "link": "/data/blogs/blog.md",
+        "content": "",
+        "image": "https://thumbs.dreamstime.com/b/girl-power-vector-lettering-illustration-pink-female-silhouette-doing-bicep-curl-hand-written-inspirational-message-120308341.jpg",
     },
 ]
 
