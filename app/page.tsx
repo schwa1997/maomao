@@ -2,7 +2,7 @@
 import { highlights } from './data/data';
 import HighlightCard from './reusable/components/highlightCard';
 import Container from './reusable/reusable/container';
-import Footer from './reusable/Footer';
+
 
 export default function Home() {
 
@@ -14,7 +14,7 @@ export default function Home() {
             <HighlightCard description={item.text} key={index} highlight={item.highlight} /></Container>
         ))}
       </main>
-      <Footer />
+  
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Blog } from '../../types/type';
 import Container from '../reusable/container';
 
+
 interface BlogCardProps {
   blog: Blog;
 }

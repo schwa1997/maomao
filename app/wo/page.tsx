@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { profile } from '../data/data';
 import { Tweet, Comment } from '../types/type';
 import Timeline from '../reusable/components/timeline';
-import SectionContainer from '../reusable/components/sectionContainer';
+import SectionContainer from '../reusable/reusable/sectionContainer';
 
 export default function Collection() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
@@ -46,16 +46,17 @@ export default function Collection() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 space-y-16">
+    <div className="container mx-auto px-4 py-6 space-y-6">
       <SectionContainer title="介绍">
         <div className="flex flex-col items-center">
-          <h1 className="text-4xl font-light mb-4 text-black dark:text-white">{profile.name}</h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">{profile.description}</p>
         </div>
       </SectionContainer>
 
       <SectionContainer title="我的时间线">
-        <Timeline events={profile.timeline} />
+     
+          <Timeline events={profile.timeline} />
+   
       </SectionContainer>
 
       <SectionContainer title="学习先锋">
@@ -78,7 +79,7 @@ export default function Collection() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {tweets.map((tweet) => (
             <div key={tweet.id} className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-md transition-shadow">
-              <p className="text-black dark:text-white mb-4 italic">"{tweet.full_text}"</p>
+              <p className="text-black dark:text-white mb-4 italic">&quot;{tweet.full_text}&quot;</p>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">- {new Date(tweet.created_at).toLocaleString()}</p>
 
               <div className="mb-6">

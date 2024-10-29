@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link';
 import { Blog } from '../../types/type';
 
 interface BlogCardProps {
@@ -9,7 +8,6 @@ interface BlogCardProps {
 
 export default function BlogCard({ blog }: BlogCardProps) {
   return (
-    
     <div className="max-w-3xl mx-auto px-6 py-12 bg-white dark:bg-black">
       <article className="prose max-w-none">
         <h1 className="text-4xl font-bold text-black dark:text-white mb-6">{blog.title}</h1>

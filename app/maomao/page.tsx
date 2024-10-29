@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Tweet } from '../types/type';
-import InfoHeader from '../reusable/InfoHeader';
+import InfoHeader from '../reusable/reusable/InfoHeader';
 import QuoteCard from '../reusable/components/quoteCard';
 import PinkButton from '../reusable/reusable/PinkButton';
-import Container from '../reusable/reusable/container';
+import Container from '../reusable/reusable/Container';
 
 const TWEETS_PER_PAGE = 10;
 

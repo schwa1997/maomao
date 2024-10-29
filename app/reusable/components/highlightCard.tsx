@@ -1,7 +1,6 @@
 'use client'
 
 import Link from "next/link";
-import NavLink from "../reusable/nav";
 
 interface HighlightCardProps {
     title?: string;

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react';
 import PinkButton from '../reusable/PinkButton';
 
 interface QuoteCardProps {
@@ -31,7 +30,7 @@ export default function QuoteCard({ text, date }: QuoteCardProps) {
 
         // Split text into paragraphs
         const paragraphs = text.split('\n\n');
-        let lines: string[] = [];
+        const lines: string[] = [];
         let totalHeight = padding * 2; // Top and bottom padding
 
         // Calculate lines and total height needed

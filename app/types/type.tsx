@@ -52,6 +52,7 @@ interface Blog {
     image: string;
 }
 interface TimelineEvent {
+    id: number;
     title: string;
     date: string;
     description: string;
