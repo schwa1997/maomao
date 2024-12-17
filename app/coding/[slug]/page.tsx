@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { tuturials } from '../../data/data';
-import { Tutorial } from '../../types/type';
-import { TutorialCard } from '../../reusable/components/tuturial';
-import PinkButton from '@/app/reusable/reusable/PinkButton';
-import SectionContainer from '@/app/reusable/reusable/sectionContainer';
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { tuturials } from "../../data/data";
+import { Tutorial } from "../../types/type";
+import { TutorialCard } from "../../reusable/components/tuturial";
+import PinkButton from "@/app/reusable/reusableComponents/PinkButton";
+import SectionContainer from "@/app/reusable/reusableComponents/sectionContainer";
 export default function TutorialPage() {
   const { slug } = useParams();
   const router = useRouter();
@@ -16,12 +16,14 @@ export default function TutorialPage() {
 
   useEffect(() => {
     const tutorialId = parseInt(slug as string, 10);
-    const currentIndex = tuturials.findIndex(t => t.id === tutorialId);
+    const currentIndex = tuturials.findIndex((t) => t.id === tutorialId);
 
     if (currentIndex !== -1) {
       setTutorial(tuturials[currentIndex]);
       setPrevTutorial(currentIndex > 0 ? tuturials[currentIndex - 1] : null);
-      setNextTutorial(currentIndex < tuturials.length - 1 ? tuturials[currentIndex + 1] : null);
+      setNextTutorial(
+        currentIndex < tuturials.length - 1 ? tuturials[currentIndex + 1] : null
+      );
     } else {
       setTutorial(null);
       setPrevTutorial(null);
@@ -30,7 +32,9 @@ export default function TutorialPage() {
   }, [slug]);
 
   if (!tutorial) {
-    return <div className="container mx-auto px-4 py-8">Tutorial not found</div>;
+    return (
+      <div className="container mx-auto px-4 py-8">Tutorial not found</div>
+    );
   }
 
   const goToPrevious = () => {
@@ -46,18 +50,18 @@ export default function TutorialPage() {
   };
 
   return (
-    <div className="mx-auto px-4 py-8"> 
+    <div className="mx-auto px-4 py-8">
       <div className="grid grid-cols-1 gap-6 w-full">
         <SectionContainer title="文档" defaultOpen={false}>
-        <TutorialCard tutorial={tutorial} key={tutorial.id} />
+          <TutorialCard tutorial={tutorial} key={tutorial.id} />
         </SectionContainer>
         <SectionContainer title="视频" defaultOpen={false}>
-        <div className="mt-8">
-          <video className="w-full rounded-lg" controls>
-            {/* <source src={tutorial.video} type="video/mp4" /> */}
-            Your browser does not support the video tag.
-          </video>
-        </div>
+          <div className="mt-8">
+            <video className="w-full rounded-lg" controls>
+              {/* <source src={tutorial.video} type="video/mp4" /> */}
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </SectionContainer>
       </div>
       <div className="flex justify-between">

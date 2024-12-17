@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Tutorial } from "../../types/type";
-import Container from "../reusable/Container";
-
+import Container from "../reusableComponents/containerBox";
+import Image from "next/image";
 
 interface TutorialCardProps {
   tutorial: Tutorial;
@@ -18,9 +18,11 @@ export default function TutorialCardPreview({ tutorial }: TutorialCardProps) {
         <h2 className="text-xl font-semibold mb-2 text-black dark:text-white">
           {tutorial.title}
         </h2>
-        <img
+        <Image
           src={tutorial.image}
           alt={tutorial.title}
+          width={800}
+          height={400}
           className="w-full h-48 object-cover rounded-lg mb-4"
         />
 

@@ -2,8 +2,9 @@
 
 import { MediaItem } from "@/app/types/type";
 import { useState } from "react";
-import PinkButton from "../reusable/PinkButton";
-import Container from "../reusable/Container";
+import PinkButton from "../reusableComponents/PinkButton";
+import Container from "../reusableComponents/containerBox";
+import Image from "next/image";
 
 interface MediaModalProps {
   media: MediaItem;
@@ -100,9 +101,11 @@ export default function MediaCard({ media }: MediaModalProps) {
               <span className="text-gray-600">{media.category}</span>
             </div>
             <div className="mt-4">
-              <img
+              <Image
                 src={media.image}
                 alt={media.name}
+                width={800}
+                height={400}
                 className="w-full h-40 object-cover rounded-md"
               />
             </div>
@@ -129,7 +132,7 @@ function MediaModal({ media, onClose }: MediaModalProps) {
           >
             <svg
               className="h-6 w-6"
-              fill="none" 
+              fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
@@ -144,36 +147,53 @@ function MediaModal({ media, onClose }: MediaModalProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <img
+              <Image
                 src={media.image}
                 alt={`${media.name} image`}
+                width={800}
+                height={400}
                 className="w-full aspect-square object-cover rounded-lg shadow-md"
               />
             </div>
 
             <div className="flex flex-col">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{media.name}</h2>
-              
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                {media.name}
+              </h2>
+
               <div className="flex items-center mb-6 text-gray-600 dark:text-gray-400">
                 {renderMediaIcon(media.category)}
                 <span>{media.category}</span>
               </div>
 
               <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Description</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{media.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+                  Description
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {media.description}
+                </p>
               </div>
 
               <div className="mt-auto">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Comments</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+                  Comments
+                </h3>
                 <div className="space-y-3">
                   {media.comments?.map((comment, index) => (
-                    <div key={index} className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                      <p className="text-gray-600 dark:text-gray-300">{comment}</p>
+                    <div
+                      key={index}
+                      className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
+                    >
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {comment}
+                      </p>
                     </div>
                   ))}
                   {(!media.comments || media.comments.length === 0) && (
-                    <p className="text-gray-500 dark:text-gray-400 italic">No comments yet</p>
+                    <p className="text-gray-500 dark:text-gray-400 italic">
+                      No comments yet
+                    </p>
                   )}
                 </div>
               </div>

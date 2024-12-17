@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import PinkButton from '@/app/reusable/reusable/PinkButton'
-import { blogs } from '../../data/data'
-import BlogCard from '../../reusable/components/blog'
-import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation';
+import PinkButton from "@/app/reusable/reusableComponents/PinkButton";
+import { blogs } from "../../data/data";
+import BlogCard from "../../reusable/components/blog";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 export default function BlogPost() {
-  const params = useParams()
+  const params = useParams();
   const router = useRouter();
-  const currentId = parseInt(params.slug as string)
-  const blog = blogs.find(b => b.id === currentId)
+  const currentId = parseInt(params.slug as string);
+  const blog = blogs.find((b) => b.id === currentId);
 
   if (!blog) {
     return (
@@ -27,11 +27,11 @@ export default function BlogPost() {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
-  const prevBlog = blogs.find(b => b.id === currentId - 1)
-  const nextBlog = blogs.find(b => b.id === currentId + 1)
+  const prevBlog = blogs.find((b) => b.id === currentId - 1);
+  const nextBlog = blogs.find((b) => b.id === currentId + 1);
 
   const goToPrevious = () => {
     if (prevBlog) {
@@ -45,35 +45,23 @@ export default function BlogPost() {
     }
   };
 
-
-
-
-
-
-
-
-
   return (
     <div className="container mx-auto px-4 py-8">
       <BlogCard blog={blog} />
 
       <nav className="flex justify-between items-center max-w-3xl mx-auto mt-8">
         {prevBlog ? (
-          
-   
           <PinkButton text="←上一篇" onClick={goToPrevious} size="small" />
         ) : (
           <div />
         )}
 
         {nextBlog ? (
-          
           <PinkButton text="下一篇→" onClick={goToNext} size="small" />
-         
         ) : (
           <div />
         )}
       </nav>
     </div>
-  )
+  );
 }

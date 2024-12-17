@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import { profile } from '../data/data';
-import { Tweet, Comment } from '../types/type';
-import Timeline from '../reusable/components/timeline';
-import SectionContainer from '../reusable/reusable/sectionContainer';
+import { useState, useEffect } from "react";
+import { profile } from "../data/data";
+import { Tweet, Comment } from "../types/type";
+import Timeline from "../reusable/components/timeline";
+import SectionContainer from "../reusable/reusableComponents/sectionContainer";
 
 export default function Collection() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState<string>('');
+  const [newComment, setNewComment] = useState<string>("");
   const [selectedTweetId, setSelectedTweetId] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchTweets() {
       try {
-        const response = await fetch('/tweets.json');
+        const response = await fetch("/tweets.json");
         if (!response.ok) {
-          throw new Error('Failed to fetch tweets');
+          throw new Error("Failed to fetch tweets");
         }
         const allTweets = await response.json();
         const filteredTweets = allTweets.filter((tweet: Tweet) =>
-          profile.notes.some(note => note.tweet_id === tweet.id)
+          profile.notes.some((note) => note.tweet_id === tweet.id)
         );
         setTweets(filteredTweets);
       } catch (error) {
-        console.error('Error fetching tweets:', error);
+        console.error("Error fetching tweets:", error);
       }
     }
 
@@ -37,10 +37,10 @@ export default function Collection() {
     if (newComment.trim()) {
       const comment: Comment = {
         tweet_id: tweetId,
-        comment: newComment.trim()
+        comment: newComment.trim(),
       };
-      setComments(prevComments => [...prevComments, comment]);
-      setNewComment('');
+      setComments((prevComments) => [...prevComments, comment]);
+      setNewComment("");
       setSelectedTweetId(null);
     }
   };
@@ -49,24 +49,35 @@ export default function Collection() {
     <div className="container mx-auto px-4 py-6 space-y-6">
       <SectionContainer title="介绍">
         <div className="flex flex-col items-center">
-          <p className="text-lg text-gray-600 dark:text-gray-300">{profile.description}</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            {profile.description}
+          </p>
         </div>
       </SectionContainer>
 
       <SectionContainer title="我的时间线">
-     
-          <Timeline events={profile.timeline} />
-   
+        <Timeline events={profile.timeline} />
       </SectionContainer>
 
       <SectionContainer title="学习先锋">
         <div className="grid gap-8 md:grid-cols-2">
           {profile.roleModels.map((roleModel, index) => (
-            <div key={index} className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-light mb-4 text-black dark:text-white">{roleModel.name}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{roleModel.description}</p>
-              <a href={roleModel.twitterUrl} target="_blank" rel="noopener noreferrer" 
-                className="inline-block text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors">
+            <div
+              key={index}
+              className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-xl font-light mb-4 text-black dark:text-white">
+                {roleModel.name}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                {roleModel.description}
+              </p>
+              <a
+                href={roleModel.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors"
+              >
                 Twitter Profile →
               </a>
             </div>
@@ -74,24 +85,36 @@ export default function Collection() {
         </div>
       </SectionContainer>
 
-
       <SectionContainer title="我受到的启发">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {tweets.map((tweet) => (
-            <div key={tweet.id} className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-md transition-shadow">
-              <p className="text-black dark:text-white mb-4 italic">&quot;{tweet.full_text}&quot;</p>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">- {new Date(tweet.created_at).toLocaleString()}</p>
+            <div
+              key={tweet.id}
+              className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-md transition-shadow"
+            >
+              <p className="text-black dark:text-white mb-4 italic">
+                &quot;{tweet.full_text}&quot;
+              </p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
+                - {new Date(tweet.created_at).toLocaleString()}
+              </p>
 
               <div className="mb-6">
-                <h4 className="text-lg font-light mb-4 text-black dark:text-white">我的笔记：</h4>
+                <h4 className="text-lg font-light mb-4 text-black dark:text-white">
+                  我的笔记：
+                </h4>
                 {comments
-                  .filter(c => c.tweet_id === tweet.id)
+                  .filter((c) => c.tweet_id === tweet.id)
                   .map((comment, index) => (
-                    <div key={index} className="border-l-2 border-gray-200 dark:border-gray-700 pl-4 mb-4">
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">{comment.comment}</p>
+                    <div
+                      key={index}
+                      className="border-l-2 border-gray-200 dark:border-gray-700 pl-4 mb-4"
+                    >
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        {comment.comment}
+                      </p>
                     </div>
-                  ))
-                }
+                  ))}
               </div>
 
               {selectedTweetId === tweet.id ? (

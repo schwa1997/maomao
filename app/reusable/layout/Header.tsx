@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { SheetTitle } from "@/components/ui/sheet";
-import PinkButton from "../reusable/PinkButton";
-import NavLink from "../reusable/nav";
+import PinkButton from "../reusableComponents/PinkButton";
+import NavLink from "../reusableComponents/nav";
 
 const NavLinks = () => (
   <>

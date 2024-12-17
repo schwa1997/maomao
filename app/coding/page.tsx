@@ -1,19 +1,20 @@
-'use client'
+"use client";
 
-import { useState } from 'react';
-import { tuturials } from '../data/data';
-import { Tutorial } from '../types/type';
-import InfoHeader from '../reusable/reusable/InfoHeader';
-import TutorialCardPreview from '../reusable/components/tuturialPreview';
-
+import { useState } from "react";
+import { tuturials } from "../data/data";
+import { Tutorial } from "../types/type";
+import InfoHeader from "../reusable/reusableComponents/InfoHeader";
+import TutorialCardPreview from "../reusable/components/tuturialPreview";
 
 export default function CodingTutorials() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-
-  const filteredTutorials = tuturials.filter((tutorial: Tutorial) =>
-    tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    tutorial.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredTutorials = tuturials.filter(
+    (tutorial: Tutorial) =>
+      tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tutorial.tags.some((tag) =>
+        tag.toLowerCase().includes(searchTerm.toLowerCase())
+      )
   );
 
   return (

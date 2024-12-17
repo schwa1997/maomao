@@ -1,19 +1,18 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Tweet } from '../types/type';
-import QuoteCard from '../reusable/components/quoteCard';
-import PinkButton from '../reusable/reusable/PinkButton';
-import Container from '../reusable/reusable/Container';
+import { useState, useEffect } from "react";
+import { Tweet } from "../types/type";
+import QuoteCard from "../reusable/components/quoteCard";
+import PinkButton from "../reusable/reusableComponents/PinkButton";
+import Container from "../reusable/reusableComponents/containerBox";
 
 export default function Home() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
-  const [searchDate, setSearchDate] = useState('');
-  const [searchText, setSearchText] = useState('');
+  const [searchDate, setSearchDate] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [isShowInfo, setIsShowInfo] = useState(false);
-  const popularSearchTerms = ['钱', '权', '自由', '平等', '双标', '😂', '家'];
-  const [loading, setLoading] = useState(false);
+  const popularSearchTerms = ["钱", "权", "自由", "平等", "双标", "😂", "家"];
 
   useEffect(() => {
     fetchTweets();
@@ -21,29 +20,38 @@ export default function Home() {
 
   const fetchTweets = async () => {
     try {
-      const response = await fetch('/tweets.json');
+      const response = await fetch("/tweets.json");
       if (!response.ok) {
-        throw new Error('Failed to fetch tweets');
+        throw new Error("Failed to fetch tweets");
       }
       const data = await response.json();
-      const sortedTweets = data.sort((a: Tweet, b: Tweet) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      const sortedTweets = data.sort(
+        (a: Tweet, b: Tweet) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
       setTweets(sortedTweets);
     } catch (error) {
-      console.error('Error fetching tweets:', error);
+      console.error("Error fetching tweets:", error);
     }
   };
 
-  const filteredTweets = tweets.filter(tweet => {
-    const matchesDate = !isFilterActive || !searchDate || new Date(tweet.created_at).toDateString() === new Date(searchDate).toDateString();
-    const matchesText = !searchText || tweet.full_text.toLowerCase().includes(searchText.toLowerCase());
+  const filteredTweets = tweets.filter((tweet) => {
+    const matchesDate =
+      !isFilterActive ||
+      !searchDate ||
+      new Date(tweet.created_at).toDateString() ===
+        new Date(searchDate).toDateString();
+    const matchesText =
+      !searchText ||
+      tweet.full_text.toLowerCase().includes(searchText.toLowerCase());
     return matchesDate && matchesText;
   });
 
   const handleFilterToggle = () => {
     setIsFilterActive(!isFilterActive);
     if (isFilterActive) {
-      setSearchDate('');
-      setSearchText('');
+      setSearchDate("");
+      setSearchText("");
     }
   };
 
@@ -82,17 +90,27 @@ export default function Home() {
                 </div>
               </Container>
             )}
-            {isShowInfo &&
+            {isShowInfo && (
               <Container>
                 <div className="flex items-center justify-center h-full">
-                  <p className="text-center">你可以使用filter或者关键词，查找你想要的话，可以复制粘贴给朋友，或者可以点击下载存为图片</p>
+                  <p className="text-center">
+                    你可以使用filter或者关键词，查找你想要的话，可以复制粘贴给朋友，或者可以点击下载存为图片
+                  </p>
                 </div>
               </Container>
-            }
+            )}
           </div>
           <div className="flex gap-4 px-4">
-            <PinkButton text={isShowInfo ? '隐藏说明' : '使用说明'} size="small" onClick={() => setIsShowInfo(!isShowInfo)} />
-            <PinkButton text={isFilterActive ? '关闭查找' : '查找'} onClick={handleFilterToggle} size="small" />
+            <PinkButton
+              text={isShowInfo ? "隐藏说明" : "使用说明"}
+              size="small"
+              onClick={() => setIsShowInfo(!isShowInfo)}
+            />
+            <PinkButton
+              text={isFilterActive ? "关闭查找" : "查找"}
+              onClick={handleFilterToggle}
+              size="small"
+            />
           </div>
         </div>
       </div>
@@ -105,7 +123,6 @@ export default function Home() {
           />
         ))}
       </div>
-      {loading && <p className="text-center mt-4 text-black dark:text-white">Loading more tweets...</p>}
     </div>
   );
 }

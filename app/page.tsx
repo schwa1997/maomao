@@ -1,6 +1,6 @@
-import { highlights } from './data/data';
-import HighlightCard from './reusable/components/highlightCard';
-import Container from './reusable/reusable/Container';
+import { highlights } from "./data/data";
+import HighlightCard from "./reusable/components/highlightCard";
+import Container from "./reusable/reusableComponents/containerBox";
 
 export default function Home() {
   return (

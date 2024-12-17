@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { resources } from "../data/data";
-import SectionContainer from "../reusable/reusable/sectionContainer";
+import SectionContainer from "../reusable/reusableComponents/sectionContainer";
 import MediaCard from "../reusable/components/mediaCard";
 import CommunityCard from "../reusable/components/communityCard";
 
